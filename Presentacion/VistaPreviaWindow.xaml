@@ -1,0 +1,17 @@
+<Window x:Class="Presentacion.VistaPreviaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tech Solutions – Vista previa de impresión" Height="720" Width="840"
+        WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="8">
+            <TextBlock Text="Impresora:" Style="{StaticResource Etiqueta}"/>
+            <ComboBox x:Name="cboImpresora" Width="280" DisplayMemberPath="Nombre"
+                      SelectionChanged="cboImpresora_SelectionChanged"/>
+            <TextBlock x:Name="lblCola" Style="{StaticResource Etiqueta}" Margin="10,4"/>
+            <Button x:Name="btnImprimir" Content="Imprimir" Click="btnImprimir_Click"/>
+            <Button x:Name="btnCerrar" Content="Cerrar" Click="btnCerrar_Click"/>
+        </StackPanel>
+        <FlowDocumentScrollViewer x:Name="visor" Zoom="100" IsToolBarVisible="True"/>
+    </DockPanel>
+</Window>

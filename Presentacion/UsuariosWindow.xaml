@@ -1,0 +1,61 @@
+<Window x:Class="Presentacion.UsuariosWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tech Solutions – Usuarios" Height="640" Width="780"
+        WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Registro de usuarios -->
+        <StackPanel Grid.Row="0">
+            <TextBlock x:Name="lblTitulo" Text="Registrar usuario" Style="{StaticResource Titulo}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Usuario:" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtLogin" Grid.Row="0" Grid.Column="1" MaxLength="30"/>
+                <TextBlock Grid.Row="1" Text="Contraseña:" Style="{StaticResource Etiqueta}"/>
+                <PasswordBox x:Name="txtClave" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Grid.Row="2" Text="Confirmar contraseña:" Style="{StaticResource Etiqueta}"/>
+                <PasswordBox x:Name="txtConfirmar" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Grid.Row="3" Text="Rol:" Style="{StaticResource Etiqueta}"/>
+                <ComboBox x:Name="cboRol" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="200"/>
+                <Button x:Name="btnRegistrar" Grid.Column="2" Grid.RowSpan="4" Content="Registrar"
+                        VerticalAlignment="Top" Margin="8,4,0,0" Click="btnRegistrar_Click"/>
+            </Grid>
+            <TextBlock Foreground="Gray" TextWrapping="Wrap" Margin="4,6,4,0"
+                       Text="La contraseña debe tener entre 8 y 64 caracteres, con mayúscula, minúscula, número y símbolo (ejemplo: Mi#Clave2026)."/>
+        </StackPanel>
+
+        <!-- Búsqueda, desbloqueo y equipo autorizado -->
+        <StackPanel x:Name="panelAdministracion" Grid.Row="1" Margin="0,16,0,0">
+            <TextBlock Text="Buscar usuario (por nombre exacto)" Style="{StaticResource Titulo}"/>
+            <DockPanel>
+                <Button x:Name="btnDesbloquear" Content="Desbloquear" DockPanel.Dock="Right" Click="btnDesbloquear_Click"/>
+                <Button x:Name="btnBuscar" Content="Buscar" DockPanel.Dock="Right" Click="btnBuscar_Click"/>
+                <TextBox x:Name="txtBuscar"/>
+            </DockPanel>
+            <DockPanel Margin="0,6,0,0">
+                <Button x:Name="btnAutorizar" Content="Autorizar este equipo" DockPanel.Dock="Right"
+                        Click="btnAutorizar_Click"/>
+                <TextBlock x:Name="lblEquipo" Style="{StaticResource Etiqueta}" TextWrapping="Wrap"/>
+            </DockPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="dgUsuarios" Grid.Row="2" Margin="4,8,4,4"
+                  AutoGeneratingColumn="dgUsuarios_AutoGeneratingColumn"/>
+    </Grid>
+</Window>

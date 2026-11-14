@@ -1,0 +1,57 @@
+<Window x:Class="Presentacion.VentasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tech Solutions – Registrar venta" Height="620" Width="820"
+        WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Nueva venta" Style="{StaticResource Titulo}"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Cliente:" Style="{StaticResource Etiqueta}"/>
+            <ComboBox x:Name="cboCliente" Grid.Row="0" Grid.Column="1"
+                      DisplayMemberPath="Nombre" SelectedValuePath="Id"/>
+            <TextBlock Grid.Row="1" Text="Producto:" Style="{StaticResource Etiqueta}"/>
+            <ComboBox x:Name="cboProducto" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Texto"/>
+            <TextBlock Grid.Row="2" Text="Cantidad:" Style="{StaticResource Etiqueta}"/>
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <TextBox x:Name="txtCantidad" Text="1" Width="80" MaxLength="5"/>
+                <Button x:Name="btnAgregar" Content="Agregar" Click="btnAgregar_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="dgLineas" Grid.Row="2" Margin="4,10,4,4" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Código" Binding="{Binding Codigo, Mode=OneWay}" Width="100"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad, Mode=OneWay}" Width="80"/>
+                <DataGridTextColumn Header="P. Unitario" Binding="{Binding PrecioUnitario, Mode=OneWay, StringFormat=N2}" Width="100"/>
+                <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal, Mode=OneWay, StringFormat=N2}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DockPanel Grid.Row="3" Margin="0,8,0,0">
+            <Button x:Name="btnQuitar" Content="Quitar seleccionado" DockPanel.Dock="Left" Click="btnQuitar_Click"/>
+            <Button x:Name="btnRegistrar" Content="Registrar venta" DockPanel.Dock="Right"
+                    FontWeight="Bold" Padding="20,8" Click="btnRegistrar_Click"/>
+            <TextBlock x:Name="lblTotal" Text="Total: S/ 0.00" FontSize="18" FontWeight="Bold"
+                       VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,16,0"/>
+        </DockPanel>
+    </Grid>
+</Window>

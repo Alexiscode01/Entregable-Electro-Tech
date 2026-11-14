@@ -1,0 +1,19 @@
+<Window x:Class="Presentacion.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tech Solutions – Iniciar sesión" Height="340" Width="400"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        FocusManager.FocusedElement="{Binding ElementName=txtLogin}">
+    <StackPanel Margin="28,22">
+        <TextBlock Text="TECH SOLUTIONS" FontSize="24" FontWeight="Bold"
+                   Foreground="{StaticResource ColorPrimario}" Margin="4,0,4,0"/>
+        <TextBlock Text="Inicie sesión para continuar" Foreground="Gray" Margin="4,0,4,16"/>
+        <TextBlock Text="Usuario" Style="{StaticResource Etiqueta}" Margin="4,0"/>
+        <TextBox x:Name="txtLogin" MaxLength="30"/>
+        <TextBlock Text="Contraseña" Style="{StaticResource Etiqueta}" Margin="4,6,4,0"/>
+        <PasswordBox x:Name="txtClave"/>
+        <TextBlock x:Name="lblMensaje" Foreground="Firebrick" TextWrapping="Wrap"
+                   Margin="4,8,4,0" MinHeight="36"/>
+        <Button x:Name="btnIngresar" Content="Ingresar" IsDefault="True" Click="btnIngresar_Click"/>
+    </StackPanel>
+</Window>
